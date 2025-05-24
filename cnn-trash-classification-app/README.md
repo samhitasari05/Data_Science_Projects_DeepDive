@@ -1,48 +1,44 @@
-# ♻️ Trash Classification using CNN (with Flask Deployment)
+# Trash Classification using Convolutional Neural Networks (CNN)
 
-This project is a fork and extension of the [webapp-trash-classification](https://github.com/vladalexey/webapp-trash-classification) repository originally created by [vladalexey](https://github.com/vladalexey). It applies Convolutional Neural Networks (CNNs) to classify images of trash into six categories and includes a Flask-based web application for real-time predictions.
-
----
-
-## 🌍 Problem Overview
-
-Manual waste sorting is inefficient and prone to human error. This project addresses the need for automated waste classification by using a CNN trained on trash images to assist in environmental management and recycling efforts.
+This repository is a fork and extension of the [webapp-trash-classification](https://github.com/vladalexey/webapp-trash-classification) project originally developed by [vladalexey](https://github.com/vladalexey). It demonstrates the use of Convolutional Neural Networks (CNNs) to classify images of waste into six categories, with a Flask-based web application enabling real-time image classification.
 
 ---
 
-## 🧠 My Contributions
+## Project Description
 
-As part of my machine learning and deployment journey, I:
+Manual trash sorting is inefficient, error-prone, and labor-intensive. This project explores how deep learning can support smart recycling and waste segregation systems by automating trash classification.
 
-- ✅ Refactored and documented the code for better readability
-- ✅ Rewrote and expanded the README to clearly explain project goals, structure, and usage
-- ✅ Identified future improvement areas including:
-  - Transfer learning integration (e.g., ResNet)
-  - Public deployment using Streamlit or Hugging Face Spaces
-  - UI/UX enhancements and webcam support
+The underlying model is a CNN trained on image data corresponding to various waste types. The trained model is integrated into a lightweight Flask web interface that allows users to upload images and receive predicted labels. This serves as a prototype for real-world deployment in smart waste bins or civic waste collection applications.
+
+This project also includes enhancements and reorganization for clarity and reuse. The application demonstrates how AI techniques can be paired with web technologies to create deployable end-to-end solutions.
 
 ---
 
-## 🚀 Demo Screenshot
+## My Contributions
 
-![App Screenshot](static/img/demo-screenshot.png)
+This repository has been adapted and refined for learning and portfolio-building purposes. The following contributions were made:
 
----
-
-## 🛠️ Tech Stack
-
-| Function         | Technology                 |
-|------------------|----------------------------|
-| Model Training   | PyTorch (originally TensorFlow supported) |
-| Image Handling   | OpenCV, NumPy              |
-| Web Interface    | Flask, HTML, CSS           |
-| Visualization    | Matplotlib (optional)      |
+- Refactored and documented existing code for readability and reuse.
+- Expanded project structure documentation including this updated README.
+- Identified future development areas such as:
+  - Transfer learning with pretrained CNN architectures (e.g., ResNet).
+  - Cloud/web-based deployment using Streamlit or Hugging Face Spaces.
+  - Enhanced UI/UX and webcam support for real-time classification.
 
 ---
 
-## 🧪 Categories Detected
+## Model Summary
 
-The model predicts one of six categories:
+- **Architecture**: Basic CNN with 3–4 convolutional layers, ReLU activations, pooling layers, and fully connected output.
+- **Input**: Image data normalized and resized to fit model input requirements.
+- **Output**: Softmax probabilities across six predefined trash classes.
+- **Performance**: Validation accuracy ~85% (subject to data variability and hardware).
+
+---
+
+## Classes
+
+The model classifies uploaded images into the following categories:
 
 - Paper
 - Plastic
@@ -53,47 +49,60 @@ The model predicts one of six categories:
 
 ---
 
-## 📁 Project Structure
+## Dataset
 
-├── garbage-classification/ # CNN model and training code
-├── static/img/ # Image assets
-├── templates/ # HTML frontend templates
-├── webapp/flask-web.py # Flask app backend
-├── data_process.py # Preprocessing script
-├── demo.mov # (Optional) Demo video
-└── README.md
+The dataset used includes labeled image samples across the above six categories. It is preprocessed through resizing and normalization prior to training.
+
+Users may extend this application by augmenting the dataset or incorporating benchmark datasets like TACO or WasteNet for higher performance.
+
+---
+
+## Project Structure
+
+├── garbage-classification/ # CNN model definition and training logic
+├── static/img/ # Static assets (images/icons)
+├── templates/ # HTML templates for Flask frontend
+├── webapp/flask-web.py # Flask backend application
+├── data_process.py # Data preprocessing and preparation
+├── demo.mov # (Optional) demo recording
+└── README.md # Project documentation
 
 
 ---
 
-## 🧪 Model Overview
+## Web Application
 
-- Architecture: Custom CNN (3–4 convolutional layers)
-- Input: Trash images resized and normalized
-- Output: Softmax probability across 6 categories
-- Performance: ~85% validation accuracy
-- Deployment: Real-time image classification through web UI
+The web interface is powered by Flask and offers basic interaction functionality. Users can upload an image, which is then passed to the backend CNN model. The model returns a class prediction rendered in the frontend. This demonstrates a complete machine learning workflow: data → model → application → user.
 
 ---
 
-## 🌟 Future Improvements
+## Setup Instructions
 
-- 🔄 Switch to a transfer learning model (ResNet, MobileNet)
-- 🌐 Deploy with Streamlit, Gradio, or Hugging Face Spaces
-- 📷 Add webcam support for live classification
-- 🌎 Support multilingual labeling for broader reach
-- 📦 Incorporate TACO or WasteNet datasets for improved accuracy
+1. Clone the repository:
+```bash
+git clone https://github.com/samhitasari05/cnn-trash-classification-app.git
+cd cnn-trash-classification-app
 
----
+2. Install Python dependencies:
+pip install -r requirements.txt
 
-## 📄 Credits & License
+3.Launch the application:
+python webapp/flask-web.py
 
-This repository builds upon the open-source work of [vladalexey](https://github.com/vladalexey) under the [MIT License](LICENSE). All original authorship is retained where applicable.
+4. Visit http://127.0.0.1:5000 in your browser and upload an image to classify.
 
-> **Disclaimer**: I do not claim original authorship of the base code. This fork is intended for educational and personal portfolio purposes with attribution.
+Future Enhancements
+Integrate transfer learning models such as ResNet or MobileNet.
 
----
+Enable webcam-based real-time trash detection.
 
-Explore more at [github.com/samhitasari05](https://github.com/samhitasari05).
+Expand dataset with publicly available annotated data.
 
+Deploy using interactive platforms such as Streamlit or Hugging Face Spaces.
 
+Improve frontend accessibility and multilingual support.
+
+Credits & License
+This project builds upon the open-source repository webapp-trash-classification, developed by vladalexey. The original code is licensed under the MIT License and reused here for academic and educational purposes with attribution.
+
+This repository is for educational use only and does not claim original authorship of the base implementation. Contributions are limited to reorganization, documentation, and forward-planning for real-world applications.
